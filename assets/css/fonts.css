@@ -1,0 +1,35 @@
+@font-face {
+  font-family:SwissDIN;
+  src:url(/assets/fonts/SwissDin-Light.woff2) format("woff2");
+  font-weight:400;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:Vinta;
+  src:url(/assets/fonts/SwissDin-LightItalic.woff2) format("woff2");
+  font-weight:400;
+  font-style:italic;
+}
+
+@font-face {
+  font-family:DN Manuscript;
+  src:url(/assets/fonts/DNManuscript.woff2) format("woff2");
+  font-weight:400;
+}
+
+
+@font-face {
+  font-family:Neubau;
+  src:url(/assets/fonts/neubaugrotesk-65halbfett.otf) format("OpenType");
+  font-weight: 600;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:Neubau;
+  src:url(/assets/fonts/neubaugrotesk-85schwer.otf) format("OpenType");
+  font-weight: 800;
+  font-style:normal;
+}
+

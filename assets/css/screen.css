@@ -139,7 +139,7 @@ a > div > img:hover {
   /*right: 13px;*/
   color: var(--color);
   /*text-align: center;*/
-  margin-bottom: 2rem;
+  /*margin-bottom: 2rem;*/
 }
 
 .imprint {
@@ -528,6 +528,10 @@ a > div > img:hover {
   .grid-image img {
     width: 100%;
   }
+
+:root{
+    --room-width: 10rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
+}
 }
 
 /* ---------- Raum auf den Blockseiten (room.js, block.njk) ---------- */

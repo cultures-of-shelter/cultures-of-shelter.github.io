@@ -4,7 +4,7 @@
 /*Otto Rot: #dc001d*/
 
 --color: black ;
---color-bg: #ff9966;
+--color-bg: tan;
 
 --wall-inner: 10px;   /* Innenwand zwischen zwei Räumen (am besten gerade Zahlen) */
 --wall-outer: 20px;   /* Außenwand; Fenster und Haustür übernehmen diese Stärke */
@@ -195,6 +195,7 @@ a > div > img:hover {
   text-align: left;
   position: relative;
   box-sizing: content;
+  z-index: 10;
   /*margin-top: -2rem;*/
 }
 /* Grid */
@@ -682,16 +683,20 @@ a > div > img:hover {
 .room-projection--ceiling, 
 .room-clone{
   background-color: var(--color-bg);
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
-body img, .room-wall img, .room-projection img,
+.block-room img, .room-wall img, .room-projection img,
 .room-projection--floor img,
 .room-projection--ceiling img{
   max-height: 50vh;
   filter: grayscale(100);
   mix-blend-mode: multiply;
-  z-index: 10;
+  /*z-index: 10;*/
+  background-color: var(--color-bg);
+}
+
+.room-wall > * {
   background-color: var(--color-bg);
 }
 

@@ -3,20 +3,20 @@
   
 /*Otto Rot: #dc001d*/
 
-  --color: black;
-  --color-bg: white;
+--color: black ;
+--color-bg: #ff9966;
 
-  --wall-inner: 10px;   /* Innenwand zwischen zwei Räumen (am besten gerade Zahlen) */
-  --wall-outer: 20px;   /* Außenwand; Fenster und Haustür übernehmen diese Stärke */
-  --door-width: 56px;   /* Türbreite, bleibt bei jeder Bildschirmgröße gleich */
-  --stair-width: var(--door-width); /* Laufbreite der Treppen, bleibt gleich */
-  --stair-step: 10px;   /* Stufentiefe der Treppen, bleibt gleich */
-  --dim-offset: 30px;   /* Abstand der Maßketten von der Fassade */
+--wall-inner: 10px;   /* Innenwand zwischen zwei Räumen (am besten gerade Zahlen) */
+--wall-outer: 20px;   /* Außenwand; Fenster und Haustür übernehmen diese Stärke */
+--door-width: 56px;   /* Türbreite, bleibt bei jeder Bildschirmgröße gleich */
+--stair-width: var(--door-width); /* Laufbreite der Treppen, bleibt gleich */
+--stair-step: 10px;   /* Stufentiefe der Treppen, bleibt gleich */
+--dim-offset: 20px;   /* Abstand der Maßketten von der Fassade */
 
-  /* Anordnung – spiral.js liest diese Werte */
-  --room-width: 22rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
-  --house-columns: 5;   /* Höchstbreite des Hauses in Räumen (passen weniger auf den Bildschirm, werden es weniger) */
-  --mainfont: SwissDIN, Helvetica Neue, sans-serif;;
+/* Anordnung – spiral.js liest diese Werte */
+--room-width: 22rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
+--house-columns: 5;   /* Höchstbreite des Hauses in Räumen (passen weniger auf den Bildschirm, werden es weniger) */
+--mainfont: Neubau, Helvetica Neue, sans-serif;;
 }
 
 html {
@@ -26,6 +26,7 @@ html {
   margin: 0;
   padding: 0;
   font-size: 20px;
+  line-height: 1.1rem;
   /*font-feature-settings: "ss01" 1;*/
   color: var(--color);
   font-family: var(--mainfont);
@@ -40,7 +41,7 @@ body {
   background: var(--color-bg);
   /*font-family: Neubau, Arial Rounded, sans-serif;*/
   max-width: 100vw;
-  padding: 2px;
+  /*padding: 1rem;*/
   word-spacing: -1px;
   overflow-x: hidden;
   background-color: var(--color-bg);
@@ -82,6 +83,8 @@ br {
 hr{
   margin-top: 1rem;
   margin-bottom: 1rem;
+  color: black;
+  border: .5px dotted black;
 }
 
 
@@ -192,6 +195,7 @@ a > div > img:hover {
   text-align: left;
   position: relative;
   box-sizing: content;
+  /*margin-top: -2rem;*/
 }
 /* Grid */
 
@@ -202,7 +206,7 @@ a > div > img:hover {
   justify-content: safe center; /* … ohne links aus dem Bild zu rutschen */
 
   background: var(--color-bg);
-  margin: 100px;
+  margin: 2rem;
   position: relative; /* Außenwand zeichnet floorplan.js (--wall-outer) */
 
 
@@ -210,10 +214,10 @@ a > div > img:hover {
 
 /* Breite Räume (spiral.js): Querformate füllen den ganzen Raum, bei den
    übrigen breiten Räumen bleibt der Inhalt so groß wie in einem normalen Raum */
-.item--wide:not(.item--landscape) .grid-image {
-  box-sizing: border-box;
-  max-width: var(--room-width);
-}
+   .item--wide:not(.item--landscape) .grid-image {
+    box-sizing: border-box;
+    max-width: var(--room-width);
+  }
 
 /* Legende: die bisherige Kopfzeile, in der freien Ecke des Plans (spiral.js) */
 .grid > .legende {
@@ -225,7 +229,7 @@ a > div > img:hover {
 .grid > .legende--left  { justify-self: start; text-align: left; }
 .grid > .legende--right { justify-self: end; text-align: right; }
 .grid > .legende--outside { /* über dem Haus: Platz für die Maßketten darunter */
-  padding-bottom: calc(var(--wall-outer) + 2 * var(--dim-offset) + 1.5rem);
+  padding-bottom: calc(var(--wall-outer) + 2 * var(--dim-offset) + .5rem);
 }
 
 /* bis spiral.js und floorplan.js fertig sind, nichts zeigen (kein Springen) */
@@ -243,7 +247,7 @@ a > div > img:hover {
   /*padding-bottom: 15px;*/
   min-height: 5vh;
   border: calc(var(--wall-inner) / 2) solid var(--color); /* zwei Borders = eine Innenwand */
-
+  padding-bottom: 1rem;
 
 }
 
@@ -381,22 +385,22 @@ a > div > img:hover {
   white-space: pre-line;
 }
 
-.item:not(.item--text-static):hover .grid-image {
+/*.item:not(.item--text-static):hover .grid-image {
   opacity: 1;
   z-index: -1 ;
-}
+}*/
 
 .item:hover{
 }
 
-.item:not(.item--text-static):hover .title {
+/*.item:not(.item--text-static):hover .title {
   display: flex;
   opacity: 1;
   color: var(--color);
   z-index: 1;
-    /*box-shadow: 1px 1px 100px 1px red;*/
+  /*box-shadow: 1px 1px 100px 1px red;*/
 
-}
+}*/
 .item:not(.item--text-static):hover .title > .block-text, .title > p {
   background-color: white;
   /*border: 2px solid white;*/
@@ -434,6 +438,9 @@ a > div > img:hover {
   filter: grayscale(0%) contrast(1.1) brightness(1) !important;
 }
 
+.grid-image img:hover{
+  mix-blend-mode: luminosity;
+}
 
 .grid-image::before {
   content: "";
@@ -480,8 +487,30 @@ a > div > img:hover {
 .fp-slide  { stroke: var(--color); stroke-width: 1px; stroke-dasharray: 4 3; }    /* Schiebetür */
 .fp-pocket { stroke: var(--color-bg); stroke-width: 1px; stroke-dasharray: 5 3; } /* Tasche in der Wand */
 
+
+.fp-labels{
+  z-index: 10;
+  position: absolute;
+}
+
 .fp-label,
-.fp-label tspan { fill: var(--color); font-size: 10px; text-anchor: middle; } /* Raummaße */
+.fp-label tspan { 
+  fill: var(--color); 
+  font-size: 10px; 
+  text-anchor: middle; 
+} /* Raummaße */
+
+/*.fp-label,
+.fp-label tspan,
+.fp-dim-text {
+  fill: var(--color);
+  font-size: 10px;
+  text-anchor: middle;
+  stroke: var(--color-bg);  
+  stroke-width: 5px;         
+  stroke-linejoin: round;
+  paint-order: stroke;       
+}*/
 
 .fp-dim-line,
 .fp-dim-ext  { stroke: var(--color); stroke-width: 1px; shape-rendering: crispEdges; }
@@ -496,7 +525,7 @@ a > div > img:hover {
 .fp-stair-arrow  { fill: var(--color); }                                              /* Austritt */
 .fp-stair-text   { fill: var(--color); font-size: 9px; }                              /* „14 Stg.“ */
 
-/* ausblenden geht mit display: none, z. B. .fp-labels, .fp-dims, .fp-dim-total, .fp-stairs */
+.fp-door   { fill: var(--color-bg); stroke: none; }  /* Türbereich zwischen Türblatt und Aufschlag, liegt über allem */
 
 
 @media only screen and (max-width: 1600px) {
@@ -514,23 +543,62 @@ a > div > img:hover {
   }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 760px) {
+  :root{
+    --wall-inner: 5px;   /* Innenwand zwischen zwei Räumen (am besten gerade Zahlen) */
+    --wall-outer: 10px;   /* Außenwand; Fenster und Haustür übernehmen diese Stärke */
+    --door-width: 25px;   /* Türbreite, bleibt bei jeder Bildschirmgröße gleich */
+    --stair-width: var(--door-width); /* Laufbreite der Treppen, bleibt gleich */
+    --stair-step: 10px;   /* Stufentiefe der Treppen, bleibt gleich */
+    --dim-offset: 15px;   /* Abstand der Maßketten von der Fassade */
+
+    /* Anordnung – spiral.js liest diese Werte */
+    --room-width: 60rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
+  }
+  *{
+    font-size: 14px;
+  }
+
+  .grid{
+    margin: 3px;
+  }
+
+  .grid-image{
+    padding: 3px;
+
+  }
+
+  .fp-label{
+    display: none;
+  }
+
+  .item{
+    padding: 3px;
+  }
+  .block-text{
+    padding: 2px;
+  }
+  .block-text--html ol{
+    padding-left: 2.2rem;
+  }
+
+
   .subline {
     position: inherit;
   }
-.block-image{
-	max-width: 100%;
+  .block-image{
+   max-width: 100%;
+ }
+ :root {
+  --room-width: 14rem;
 }
-  :root {
-    --room-width: 14rem;
-  }
 
-  .grid-image img {
-    width: 100%;
-  }
+.grid-image img {
+  width: 100%;
+}
 
 :root{
-    --room-width: 10rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
+  --room-width: 10rem;  /* Breite eines Raums; breite Räume sind doppelt so breit */
 }
 }
 
@@ -607,3 +675,27 @@ a > div > img:hover {
   border: 1px solid var(--color);
   box-shadow: none;
 }
+
+.room-wall, 
+.room-projection, 
+.room-projection--floor, 
+.room-projection--ceiling, 
+.room-clone{
+  background-color: var(--color-bg);
+  z-index: -1;
+}
+
+body img, .room-wall img, .room-projection img,
+.room-projection--floor img,
+.room-projection--ceiling img{
+  max-height: 50vh;
+  filter: grayscale(100);
+  mix-blend-mode: multiply;
+  z-index: 10;
+  background-color: var(--color-bg);
+}
+
+/*.room-wall img:hover{
+  filter: grayscale(0);
+  mix-blend-mode: normal;
+}*/

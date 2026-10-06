@@ -249,6 +249,7 @@ a > div > img:hover {
   min-height: 5vh;
   border: calc(var(--wall-inner) / 2) solid var(--color); /* zwei Borders = eine Innenwand */
   padding-bottom: 1rem;
+  max-height: 60vh;
 
 }
 

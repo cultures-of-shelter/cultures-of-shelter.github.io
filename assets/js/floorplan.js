@@ -15,6 +15,7 @@
     stairCut: 0.25,
     tick: 4,
     minDimLabel: 24,
+    labelFor: ".item--board, .item--link", // nur diese Räume bekommen Maße und Fläche (fp-label)
   };
 
   const SVG_NS = "http://www.w3.org/2000/svg";
@@ -42,10 +43,6 @@
 
   function line(cls, x1, y1, x2, y2) {
     return `<line class="${cls}" x1="${num(x1)}" y1="${num(y1)}" x2="${num(x2)}" y2="${num(y2)}"/>`;
-  }
-
-  function polygon(cls, pts) {
-    return `<polygon class="${cls}" points="${pts.map(([x, y]) => num(x) + "," + num(y)).join(" ")}"/>`;
   }
 
   function subtract(lo, hi, cuts) {
@@ -267,7 +264,6 @@
 
       function opening(vertical, vA, vB, u0, u1, type, dir, hingeAtStart) {
         const P = vertical ? (u, v) => [v, u] : (u, v) => [u, v];
-        const A = (...uv) => polygon("fp-door", uv.map(([u, v]) => P(u, v)));
         const L = (cls, ua, va, ub, vb) => {
           const [x1, y1] = P(ua, va);
           const [x2, y2] = P(ub, vb);
@@ -292,14 +288,12 @@
           const leaf = w / 2;
           const um = (u0 + u1) / 2;
           const tip = face + dir * leaf;
-          out += A([u0, face], [u0, tip], [um, face]) + A([u1, face], [u1, tip], [um, face]);
           out += L("fp-leaf", u0, face, u0, tip) + L("fp-swing", u0, tip, um, face);
           out += L("fp-leaf", u1, face, u1, tip) + L("fp-swing", u1, tip, um, face);
         } else {
           const h = hingeAtStart ? u0 : u1;
           const o = hingeAtStart ? u1 : u0;
           const tip = face + dir * w;
-          out += A([h, face], [h, tip], [o, face]);
           out += L("fp-leaf", h, face, h, tip) + L("fp-swing", h, tip, o, face);
         }
         doorLines += out;
@@ -664,6 +658,7 @@
 
       const fs = parseFloat(getComputedStyle(labelProbe).fontSize) || 10;
       rooms.forEach((r) => {
+        if (!r.el.matches(CONFIG.labelFor)) return;
         const w = Math.round(r.x1 - r.x0 - 2 * b);
         const h = Math.round(r.y1 - r.y0 - 2 * b);
         const line1 = `${fmt.format(w)} × ${fmt.format(h)}`;
@@ -771,11 +766,10 @@
 
       svg.innerHTML =
         `<g class="fp-walls">${walls}</g>` +
-        `<g class="fp-openings">${gaps}${windows}</g>` +
+        `<g class="fp-openings">${gaps}${windows}${doorLines}</g>` +
         `<g class="fp-stairs">${stairs}</g>` +
         `<g class="fp-labels">${labels}</g>` +
-        `<g class="fp-dims">${dims}<g class="fp-dim-total">${dimsTotal}</g></g>` +
-        `<g class="fp-doors">${doorLines}</g>`;
+        `<g class="fp-dims">${dims}<g class="fp-dim-total">${dimsTotal}</g></g>`;
     }
 
     draw();

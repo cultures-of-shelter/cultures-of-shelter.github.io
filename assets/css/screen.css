@@ -248,7 +248,7 @@ a > div > img:hover {
   /*padding-bottom: 15px;*/
   min-height: 5vh;
   border: calc(var(--wall-inner) / 2) solid var(--color); /* zwei Borders = eine Innenwand */
-  padding-bottom: 1rem;
+  /*padding-bottom: 2rem;*/
   max-height: 60vh;
 
 }
@@ -421,7 +421,8 @@ a > div > img:hover {
   align-items: center;
   overflow: hidden;
   position: relative;
-  padding: 60px;
+  /*margin: 40px;*/
+  padding: 0;
 }
 
 .grid-image img {
@@ -434,6 +435,7 @@ a > div > img:hover {
   opacity: 1;
   position: relative;
   mix-blend-mode: multiply;
+  z-index: 1;
 }
 
 .grid-image img:hover,.item{
@@ -443,6 +445,8 @@ a > div > img:hover {
 .grid-image img:hover{
   mix-blend-mode: luminosity;
 }
+
+
 
 .grid-image::before {
   content: "";
@@ -500,6 +504,7 @@ a > div > img:hover {
   fill: var(--color); 
   font-size: 10px; 
   text-anchor: middle; 
+  z-index: -5;
 } /* Raummaße */
 
 /*.fp-label,

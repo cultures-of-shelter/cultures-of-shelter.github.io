@@ -209,7 +209,7 @@ a > div > img:hover {
   background: var(--color-bg);
   margin: 2rem;
   position: relative; /* Außenwand zeichnet floorplan.js (--wall-outer) */
-
+  margin-top: 4rem;
 
 }
 
@@ -570,9 +570,12 @@ a > div > img:hover {
     margin: 3px;
   }
 
+.header{
+padding-right: 25px;
+}
+
   .grid-image{
     padding: 3px;
-
   }
 
   .fp-label{

@@ -705,13 +705,21 @@ padding-right: 25px;
   background-color: var(--color-bg);
 }
 
-.room-wall > * > *{
+.room-wall > * > *,.room-wall > h1 {
   background-color: var(--color-bg);
   border-left: 1px solid black;
   border-right: 1px solid black;
   margin-left: -10px;
+  margin-right: -10px;
+
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.room-wall ol{
+    padding-left: 40px;
+    margin-left: -10px;
+
 }
 
 .room-wall > * > h2{

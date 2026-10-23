@@ -419,7 +419,7 @@ a > div > img:hover {
   /*flex: 1 1 100%;*/
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-y: auto;
   position: relative;
   /*margin: 40px;*/
   padding: 0;
@@ -463,6 +463,7 @@ a > div > img:hover {
   justify-content: center;
   align-items: center;
   padding: 10px !important;
+  overflow-y: auto;
 }
 
 .grid-image--text::before {
@@ -479,6 +480,36 @@ a > div > img:hover {
   text-align: left;
   overflow-wrap: anywhere;
   padding: 10px;
+}
+
+/* Tabellen aus Are.na-Textblöcken (Filter arenaTables in .eleventy.js) */
+
+.arena-table {
+  width: 100%;
+  table-layout: fixed; /* gleich breite Spalten – passt auch in schmale Räume */
+  border-collapse: collapse;
+  white-space: normal; /* .content auf den Einzelseiten hat pre-wrap */
+  font: inherit;
+  color: inherit;
+}
+
+.arena-table th,
+.arena-table td {
+  font: inherit;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  padding: 6px 10px;
+  border-top: 1px solid var(--color);
+}
+
+.arena-table td + td,
+.arena-table th + th {
+  border-left: 1px solid var(--color);
+}
+
+.arena-table thead th {
+  border-top: none;
 }
 
 
